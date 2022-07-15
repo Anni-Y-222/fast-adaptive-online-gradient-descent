@@ -6,11 +6,3 @@ Usage：Replace original algorithm with FAOGD, and your experiment results shoul
 from ours import FAOGD
 
 optimizer = FAOGD(model.parameters(), max_lr=0.01)
-
-optimizer.zero_grad()
-
-loss = torch.nn.functional.cross_entropy(model(x), y)
-
-loss.backward()
-
-optimizer.step(lambda: float(loss))
