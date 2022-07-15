@@ -4,7 +4,7 @@ except ImportError:
     raise ImportError("PyTorch is not installed, impossible to import `alig.th.AliG`")
 import numpy as np
 import copy
-class Ours(torch.optim.Optimizer):
+class FAOGD(torch.optim.Optimizer):
 
     def __init__(self,params,max_lr=None,weight_decay= 0,):
         if max_lr is not None and max_lr <= 0.0:
@@ -14,7 +14,7 @@ class Ours(torch.optim.Optimizer):
                 'Invalid weight_decay value: {}'.format(weight_decay)
             )
         defaults = dict( max_lr=max_lr,weight_decay=weight_decay,step_size=None,)
-        super(Ours, self).__init__(params, defaults)
+        super(FAOGD, self).__init__(params, defaults)
     def compute_step_size(self, loss):
         # compute squared norm of gradient
         grad_sqrd_norm = 0
